@@ -1,0 +1,5 @@
+.menuBar:hover{
+    -fx-border-width: 0 0 4 0;
+   // -fx-border-insets: 0 0 0 3;
+    -fx-border-color: white;//#9CC98E;
+}

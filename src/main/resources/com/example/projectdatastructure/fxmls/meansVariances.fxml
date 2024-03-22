@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="520.0" maxWidth="953.0" minHeight="520.0" minWidth="953.0" prefHeight="520.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projectdatastructure.MeansVariances">
+        <children>
+            <JFXTabPane fx:id="meansVariancesTab" layoutX="493.0" layoutY="194.0" prefHeight="520.0" prefWidth="953.0" style="-fx-background-color: transparent; -fx-background-radius: 25 0 0 0; -fx-border-radius: 25 0 0 0;" stylesheets="@../styles/depotage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <tabs>
+                    <Tab fx:id="setUp" text="Set Means and Variances">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+            <VBox alignment="CENTER" layoutY="2.0" maxHeight="520.0" maxWidth="954.0" minHeight="456.0" minWidth="940.0" prefHeight="520.0" prefWidth="954.0">
+                <children>
+                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="57.0" prefWidth="550.0" text="Variance and Mean Manipulation for Data Generation" textAlignment="CENTER" wrapText="true">
+                        <font>
+                            <Font name="Calibri Bold" size="22.0" />
+                        </font>
+                    </Label>
+            <Label lineSpacing="8.0" prefHeight="62.0" prefWidth="879.0" text="◌ First enter the mean and variance values." wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="16.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="62.0" prefWidth="940.0">
+               <children>
+                                    <Label lineSpacing="8.0" prefHeight="62.0" prefWidth="366.0" text="Means :" wrapText="true">
+                                       <font>
+                                          <Font name="Comic Sans MS" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="278.0" layoutY="10.0" lineSpacing="8.0" prefHeight="62.0" prefWidth="383.0" text="Variances :" wrapText="true">
+                                       <font>
+                                          <Font name="Comic Sans MS" size="16.0" />
+                                       </font>
+                                    </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="inputForm" alignment="CENTER" layoutX="10.0" layoutY="203.0" prefHeight="41.0" prefWidth="940.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="43.0" prefWidth="360.0">
+                     <children>
+                        <TextField fx:id="valueMeans" prefHeight="39.0" prefWidth="151.0">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                         <JFXButton fx:id="addMean" alignment="CENTER" buttonType="RAISED" onAction="#addMean" prefHeight="26.0" prefWidth="102.0" ripplerFill="WHITE" style="-fx-background-color: #8dc63f; -fx-background-radius: 16; -fx-border-radius: 16;" text="Add" textFill="WHITE">
+                                    <font>
+                                        <Font name="Calibri Bold" size="18.0" />
+                                    </font>
+                                    <cursor>
+                                        <Cursor fx:constant="CLOSED_HAND" />
+                                    </cursor>
+                                    <graphic>
+                                        <ImageView fx:id="img" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/add.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="300.0" layoutY="10.0" prefHeight="43.0" prefWidth="360.0">
+                     <children>
+                        <TextField fx:id="valueVariances" prefHeight="39.0" prefWidth="151.0">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <JFXButton fx:id="addVariance" alignment="CENTER" buttonType="RAISED" onAction="#addVariance" prefHeight="26.0" prefWidth="102.0" ripplerFill="WHITE" style="-fx-background-color: #8dc63f; -fx-background-radius: 16; -fx-border-radius: 16;" text="Add" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fx:id="img1" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox fx:id="outputForm" alignment="CENTER" prefHeight="73.0" prefWidth="954.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="74.0" prefWidth="450.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="183.0" text="Entered mean values:">
+                           <font>
+                              <Font name="Comic Sans MS" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="meansValues" alignment="CENTER" prefHeight="23.0" prefWidth="270.0">
+                           <font>
+                              <Font name="Comic Sans MS" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="316.0" layoutY="10.0" prefHeight="74.0" prefWidth="450.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="183.0" text="Entered variance values:">
+                           <font>
+                              <Font name="Comic Sans MS" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="variancesValues" alignment="CENTER" prefHeight="23.0" prefWidth="266.0">
+                           <font>
+                              <Font name="Comic Sans MS" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+                              <HBox fx:id="sizeInput" alignment="CENTER" prefHeight="63.0" prefWidth="926.0">
+                                 <children>
+                                    <Label lineSpacing="8.0" prefHeight="62.0" prefWidth="527.0" text="◌ Second enter the sizes of the data sets you want to generate : (*)" wrapText="true">
+                                       <font>
+                                          <Font name="Comic Sans MS" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="size1" alignment="CENTER" prefHeight="39.0" prefWidth="75.0">
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="size2" alignment="CENTER" layoutX="665.0" layoutY="22.0" prefHeight="39.0" prefWidth="75.0">
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="size3" alignment="CENTER" layoutX="721.0" layoutY="22.0" prefHeight="39.0" prefWidth="75.0">
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="size4" alignment="CENTER" layoutX="811.0" layoutY="22.0" prefHeight="39.0" prefWidth="74.0" />
+                                 </children>
+                              </HBox>
+            <HBox fx:id="buttons" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXButton fx:id="generate" alignment="CENTER" buttonType="RAISED" onAction="#generate" prefHeight="43.0" prefWidth="158.0" ripplerFill="WHITE" style="-fx-background-color: #8dc63f; -fx-background-radius: 16; -fx-border-radius: 16;" text="Generate" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+
+                  </JFXButton>
+                  <JFXButton fx:id="clear" alignment="CENTER" buttonType="RAISED" layoutX="408.0" layoutY="39.0" onAction="#clear" prefHeight="43.0" prefWidth="158.0" ripplerFill="WHITE" style="-fx-background-color: #8dc63f; -fx-background-radius: 16; -fx-border-radius: 16;" text="Clear" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+                </children>
+            </VBox>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </Tab>
+                    <Tab fx:id="generatedData" text="Generated data">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <VBox alignment="CENTER" layoutY="2.0" maxHeight="520.0" maxWidth="954.0" minHeight="437.0" minWidth="945.0" prefHeight="460.0" prefWidth="946.0">
+                                        <children>
+                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="504.0" text="Generated data" textAlignment="CENTER" wrapText="true">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="22.0" />
+                                                </font>
+                                            </Label>
+                              <HBox alignment="CENTER" prefHeight="59.0" prefWidth="946.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="59.0" prefWidth="367.0">
+                                       <children>
+                                          <Label lineSpacing="8.0" prefHeight="46.0" prefWidth="208.0" text="◌ Choose the mean value :" wrapText="true">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="boxMeans" prefHeight="26.0" prefWidth="89.0" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="50.0" />
+                                       </HBox.margin>
+                                    </HBox>
+                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="59.0" prefWidth="368.0">
+                                       <children>
+                                          <Label lineSpacing="8.0" prefHeight="46.0" prefWidth="240.0" text="◌ Choose the variance value :" wrapText="true">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="boxVariances" prefHeight="26.0" prefWidth="89.0" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="267.0" prefWidth="946.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="267.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="47.0" prefWidth="208.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="8.0" prefHeight="46.0" prefWidth="97.0" text="Size :" wrapText="true">
+                                                   <font>
+                                                      <Font name="Comic Sans MS" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="sizeValue1" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" lineSpacing="8.0" prefHeight="46.0" prefWidth="119.0" wrapText="true">
+                                                   <font>
+                                                      <Font name="Comic Sans MS" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <TableView fx:id="tableView1" prefHeight="218.0" prefWidth="185.0" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="CENTER" layoutX="380.0" layoutY="10.0" prefHeight="267.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="47.0" prefWidth="208.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="8.0" prefHeight="46.0" prefWidth="97.0" text="Size :" wrapText="true">
+                                                   <font>
+                                                      <Font name="Comic Sans MS" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="sizeValue2" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" lineSpacing="8.0" prefHeight="46.0" prefWidth="119.0" wrapText="true">
+                                                   <font>
+                                                      <Font name="Comic Sans MS" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <TableView fx:id="tableView2" prefHeight="218.0" prefWidth="208.0" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" layoutX="493.0" layoutY="10.0" prefHeight="267.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="47.0" prefWidth="208.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="8.0" prefHeight="46.0" prefWidth="97.0" text="Size :" wrapText="true">
+                                                   <font>
+                                                      <Font name="Comic Sans MS" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="sizeValue3" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" lineSpacing="8.0" prefHeight="46.0" prefWidth="119.0" wrapText="true">
+                                                   <font>
+                                                      <Font name="Comic Sans MS" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <TableView fx:id="tableView3" prefHeight="218.0" prefWidth="208.0" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="20.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="CENTER" layoutX="608.0" layoutY="10.0" prefHeight="267.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="47.0" prefWidth="208.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="8.0" prefHeight="46.0" prefWidth="97.0" text="Size :" wrapText="true">
+                                                   <font>
+                                                      <Font name="Comic Sans MS" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="sizeValue4" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" lineSpacing="8.0" prefHeight="46.0" prefWidth="119.0" wrapText="true">
+                                                   <font>
+                                                      <Font name="Comic Sans MS" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <TableView fx:id="tableView4" prefHeight="218.0" prefWidth="208.0" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="20.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                                            <JFXButton fx:id="sortingData" alignment="CENTER" buttonType="RAISED" onAction="#sortingData" prefHeight="43.0" prefWidth="158.0" ripplerFill="WHITE" style="-fx-background-color: #8dc63f; -fx-background-radius: 16; -fx-border-radius: 16;" text="Sorting Data" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font>
+                                                <cursor>
+                                                    <Cursor fx:constant="CLOSED_HAND" />
+                                                </cursor>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                            </JFXButton>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </Tab>
+                    <Tab fx:id="sortedData" text="Sorted data">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <VBox alignment="CENTER" layoutY="2.0" maxHeight="520.0" maxWidth="954.0" minHeight="437.0" minWidth="945.0" prefHeight="460.0" prefWidth="946.0">
+                                        <children>
+                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="104.0" prefWidth="504.0" text="Data Generation and Sorting Performance" textAlignment="CENTER" wrapText="true">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="22.0" />
+                                                </font>
+                                            </Label>
+                                            <LineChart fx:id="performanceChart" prefHeight="331.0" prefWidth="946.0">
+                                                <xAxis>
+                                                    <NumberAxis label="Data Size" side="BOTTOM" fx:id="xAxis" />
+                                                </xAxis>
+                                                <yAxis>
+                                                    <NumberAxis fx:id="yAxis" label="Time (ms)" side="LEFT" />
+                                                </yAxis>
+                                            </LineChart>
+
+                                            <JFXButton fx:id="importData" alignment="CENTER" buttonType="RAISED" prefHeight="43.0" prefWidth="158.0" ripplerFill="WHITE" style="-fx-background-color: #8dc63f; -fx-background-radius: 16; -fx-border-radius: 16;" text="Import " textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font>
+                                                <cursor>
+                                                    <Cursor fx:constant="CLOSED_HAND" />
+                                                </cursor>
+                                                <VBox.margin>
+                                                    <Insets top="20.0" />
+                                                </VBox.margin>
+                                            </JFXButton>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </Tab>
+                </tabs>
+            </JFXTabPane>
+        </children>
+</AnchorPane>

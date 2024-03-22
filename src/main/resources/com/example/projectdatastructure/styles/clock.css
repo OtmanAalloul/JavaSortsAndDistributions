@@ -1,0 +1,48 @@
+.root {
+  -fx-background-color: transparent;
+  -fx-pref-width:205;
+  //-fx-pref-height:170;
+}
+
+#face {
+  -fx-fill: transparent; // #B6FF51;
+  -fx-stroke: #8DC63F;
+  -fx-stroke-width: 4;
+  -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 4, 4);
+}
+
+#brand {
+  -fx-font-size: 12px;
+  -fx-font-weight: Bold;
+  -fx-font-family: 'Calibri';
+  -fx-text-fill: #8DC63F;
+}
+
+#hourHand {
+  -fx-stroke: #8DC63F;
+  -fx-stroke-width: 3;
+  -fx-stroke-line-cap: round;
+}
+
+#minuteHand {
+  -fx-stroke: #8DC63F;
+  -fx-stroke-width: 2;
+  -fx-stroke-line-cap: round;
+}
+
+#secondHand {
+  -fx-stroke: #8DC63F;
+  -fx-stroke-width: 1.5;
+  -fx-stroke-line-cap: round;
+}
+
+#spindle {
+  -fx-fill: #8DC63F;
+}
+
+ 
+.tick {
+  -fx-stroke: #8DC63F;
+  -fx-stroke-width: 1.6;
+  -fx-stroke-line-cap: round;
+}

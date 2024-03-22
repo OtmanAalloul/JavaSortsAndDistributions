@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="depotage" maxHeight="520.0" maxWidth="953.0" minHeight="520.0" minWidth="953.0" prefHeight="520.0" prefWidth="953.0" style="-fx-background-color: transparent;" stylesheets="@../styles/depotage.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projectdatastructure.DepotageController">
+   <children>
+      <JFXTabPane fx:id="depotageTab" layoutX="493.0" layoutY="194.0" prefHeight="520.0" prefWidth="953.0" style="-fx-background-color: transparent; -fx-background-radius: 25 0 0 0; -fx-border-radius: 25 0 0 0;" stylesheets="@../styles/depotage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <tabs>
+            <Tab fx:id="expedie" text="Definition">
+              <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <children>
+                          <VBox alignment="CENTER" layoutY="2.0" maxHeight="520.0" maxWidth="940.0" minHeight="456.0" minWidth="940.0" prefHeight="456.0" prefWidth="940.0">
+                              <children>
+                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="460.0" text="What is a Logistic Distribution?" textAlignment="CENTER" wrapText="true">
+                                      <font>
+                                          <Font name="Calibri Bold" size="22.0" />
+                                      </font>
+                                  </Label>
+                                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="320.0" layoutY="207.0" lineSpacing="8.0" prefHeight="121.0" prefWidth="936.0" text="The logistic distribution is used for modeling growth, and also for logistic regression. It is a symmetrical distribution, unimodal (it has one peak) and is similar in shape to the normal distribution. In fact, the logistic and normal distributions are so close in shape (although the logistic tends to have slightly fatter tails) that for most applications it’s impossible to tell one from the other." textAlignment="JUSTIFY" wrapText="true">
+                                      <font>
+                                          <Font name="Comic Sans MS" size="17.0" />
+                                      </font>
+                                  </Label>
+                                  <ImageView fitHeight="207.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                          <Image url="@../images/logisticImage.png" />
+                                      </image>
+                                  </ImageView>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="274.0" layoutY="77.0" prefHeight="47.0" prefWidth="460.0" text="Why is it Used?" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font name="Calibri Bold" size="22.0" />
+                                 </font>
+                              </Label>
+                                  <Label contentDisplay="CENTER" layoutX="38.0" layoutY="325.0" lineSpacing="10.0" prefHeight="65.0" prefWidth="939.0" text="The logistic distribution is mainly used because the curve has a relatively simple cumulative distribution formula to work with. The formula approximates the normal distribution extremely well." textAlignment="JUSTIFY" wrapText="true">
+                                      <font>
+                                          <Font name="Comic Sans MS" size="14.0" />
+                                      </font>
+                                  </Label>
+                              </children>
+                          </VBox>
+                      </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="recu" text="Properties">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <VBox alignment="CENTER" layoutY="2.0" maxHeight="520.0" maxWidth="954.0" minHeight="437.0" minWidth="945.0" prefHeight="438.0" prefWidth="945.0">
+                                <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="101.0" prefWidth="504.0" text="Cumulative distribution function (CDF)" textAlignment="CENTER" wrapText="true">
+                                        <font>
+                                            <Font name="Calibri Bold" size="22.0" />
+                                        </font>
+                                    </Label>
+                                    <ImageView fitHeight="118.0" fitWidth="293.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../images/cdf.PNG" />
+                                        </image>
+                                    </ImageView>
+                                    <Label contentDisplay="CENTER" layoutX="320.0" layoutY="207.0" lineSpacing="8.0" prefHeight="68.0" prefWidth="936.0" text="• μ represents the mean, which is the central location of the distribution." textAlignment="CENTER" wrapText="true">
+                                        <font>
+                                            <Font name="Comic Sans MS" size="17.0" />
+                                        </font>
+                                    </Label>
+                                    <Label contentDisplay="CENTER" layoutX="36.0" layoutY="284.0" lineSpacing="8.0" prefHeight="68.0" prefWidth="936.0" text="• s is the scale parameter, related to the distribution's spread and is proportional to the standard deviation." textAlignment="JUSTIFY" wrapText="true">
+                                         <font>
+                                            <Font name="Comic Sans MS" size="17.0" />
+                                         </font>
+                                    </Label>
+                                    <Label contentDisplay="CENTER" layoutX="36.0" layoutY="306.0" lineSpacing="8.0" prefHeight="79.0" prefWidth="936.0" text="• The variance of the logistic distribution is given by (s^2 * π^2) /3, showing how the scale parameter s influences the variability of the distribution." textAlignment="JUSTIFY" wrapText="true">
+                                         <font>
+                                            <Font name="Comic Sans MS" size="17.0" />
+                                         </font>
+                                    </Label>
+                                    <Label contentDisplay="CENTER" layoutX="36.0" layoutY="372.0" lineSpacing="8.0" prefHeight="107.0" prefWidth="936.0" text="To generate random variables X with a logistic distribution using the mean (μ) and scale parameter (s), you invert the CDF, yielding X = F^-1(p) = μ + s ⋅ ln( p / (1-p) ), where p is a uniformly distributed random variable between 0 and 1." textAlignment="JUSTIFY" wrapText="true">
+                                        <font>
+                                            <Font name="Comic Sans MS" size="17.0" />
+                                        </font>
+                                    </Label>
+                                </children>
+                            </VBox>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</AnchorPane>

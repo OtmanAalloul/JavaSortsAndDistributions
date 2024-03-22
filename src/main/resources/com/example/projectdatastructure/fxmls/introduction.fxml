@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="520.0" maxWidth="953.0" minHeight="520.0" minWidth="953.0" prefHeight="520.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projectdatastructure.Presentation.Introduction">
+   <children>
+      <VBox alignment="CENTER" layoutY="2.0" maxHeight="520.0" maxWidth="953.0" minHeight="520.0" minWidth="953.0" prefHeight="520.0" prefWidth="953.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="460.0" text="DataSorter App" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Calibri Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="320.0" layoutY="207.0" lineSpacing="8.0" prefHeight="143.0" prefWidth="936.0" text="The DataSorter App is a Java-based tool showcasing merge sort algorithm efficiency on logistic distribution datasets. It allows users to customize data through means and variances, enabling the visualization of sorting processes. Aimed at both students and professionals, this app facilitates an understanding of algorithmic performance on statistical data, offering a hands-on approach to learning about algorithms and statistical models." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="17.0" />
+               </font>
+            </Label>
+            <Label contentDisplay="CENTER" layoutX="40.0" layoutY="87.0" lineSpacing="10.0" prefHeight="52.0" prefWidth="939.0" text="In this application, you will find four main sections:" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="17.0" />
+               </font>
+            </Label>
+            <Label contentDisplay="CENTER" layoutX="38.0" layoutY="325.0" lineSpacing="10.0" prefHeight="65.0" prefWidth="939.0" text="• 1. Logistic Distribution: A comprehensive section offering definitions, characteristics, and examples of logistic distribution to deepen your understanding of this statistical model." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="14.0" />
+               </font>
+            </Label>
+            <Label contentDisplay="CENTER" layoutX="38.0" layoutY="435.0" lineSpacing="10.0" prefHeight="65.0" prefWidth="939.0" text="• 2. Means and Variances: A hands-on module allowing you to select various means and variances within a matrix format to explore data variability." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="14.0" />
+               </font>
+            </Label>
+            <Label contentDisplay="CENTER" layoutX="38.0" layoutY="467.0" lineSpacing="10.0" prefHeight="55.0" prefWidth="939.0" text="• 3. Data Generation: This part visualizes data generated based on chosen means and variances, setting the stage for the sorting process." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="14.0" />
+               </font>
+            </Label>
+            <Label contentDisplay="CENTER" layoutX="38.0" layoutY="500.0" lineSpacing="10.0" prefHeight="60.0" prefWidth="939.0" text="• 4. Sorting and Analysis: Observe the merge sort algorithm in action and use analytical tools provided to assess its efficiency on the sorted data." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="14.0" />
+               </font>
+            </Label>
+            <Label contentDisplay="CENTER" layoutX="38.0" layoutY="520.0" lineSpacing="10.0" prefHeight="51.0" prefWidth="939.0" text="• 5. About: A brief overview of the application's developer and supervisor, providing context and credit to the creators of DataSorter." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

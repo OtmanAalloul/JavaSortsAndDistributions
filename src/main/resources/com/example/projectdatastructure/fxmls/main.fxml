@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<FlowPane alignment="CENTER" columnHalignment="CENTER" maxHeight="650.0" maxWidth="1206.0" minHeight="650.0" minWidth="1206.0" prefHeight="650.0" prefWidth="1206.0" style="-fx-background-color: white;" stylesheets="@../styles/chartStyles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projectdatastructure.MainController">
+   <children>
+      <StackPane maxHeight="650.0" maxWidth="1206.0" minHeight="650.0" minWidth="1206.0" prefHeight="650.0" prefWidth="1205.0" style="-fx-background-color: white;" styleClass="root" stylesheets="@../styles/chartStyles.css">
+         <children>
+            <AnchorPane maxHeight="650.0" maxWidth="1206.0" minHeight="650.0" minWidth="1206.0" prefHeight="650.0" prefWidth="1206.0" style="-fx-background-color: white;" styleClass="root">
+               <children>
+                  <Pane fx:id="vivoenergy" layoutX="5.0" layoutY="39.0" maxHeight="70.0" maxWidth="996.0" minHeight="54.0" minWidth="210.0" prefHeight="54.0" prefWidth="210.0" AnchorPane.bottomAnchor="541.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="991.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <ImageView fitHeight="87.0" fitWidth="206.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <effect>
+                        <DropShadow blurType="TWO_PASS_BOX" color="#6d9460" />
+                     </effect>
+                  </Pane>
+                  <VBox fx:id="menu" alignment="CENTER" layoutX="-19.0" layoutY="135.0" maxHeight="358.0" maxWidth="210.0" minHeight="333.0" minWidth="210.0" prefHeight="333.0" prefWidth="210.0" spacing="5.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="182.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="996.0" AnchorPane.topAnchor="135.0">
+                     <children>
+                        <JFXButton fx:id="dashboard" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadIntroductionAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Introduction" textAlignment="CENTER">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -5;">
+                                 <image>
+                                    <Image url="@../images/dashboard.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="depotage" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadDistributionAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Logistic Distribution" textAlignment="CENTER">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -5;">
+                                 <image>
+                                    <Image url="@../images/dashboard.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="stockage" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadMeansVariancesAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Means &amp; Variances" textAlignment="CENTER">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -5;">
+                                 <image>
+                                    <Image url="@../images/dashboard.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="livraison" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadDistributionAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Data Generation" textAlignment="CENTER">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -5;">
+                                 <image>
+                                    <Image url="@../images/dashboard.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="statistics" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadDistributionAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Sorting &amp; Analyze">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -5;">
+                                 <image>
+                                    <Image url="@../images/dashboard.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="statistics1" buttonType="RAISED" layoutX="12.0" layoutY="260.0" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadDistributionAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="About">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -5;">
+                                 <image>
+                                    <Image url="@../images/dashboard.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets top="18.0" />
+                     </padding></VBox>
+                  <VBox fx:id="calendar" alignment="TOP_CENTER" layoutX="4.0" layoutY="469.0" maxHeight="182.0" maxWidth="205.0" prefHeight="181.0" prefWidth="205.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="469.0" />
+                  <Label fx:id="title" alignment="CENTER" layoutX="372.0" layoutY="7.0" prefHeight="28.0" prefWidth="510.0" text="Applying Merge Sort on logistic distribution data" textAlignment="CENTER" textFill="#8dc63f">
+                     <font>
+                        <Font name="Calibri Bold" size="22.0" />
+                     </font>
+                     <effect>
+                        <Lighting diffuseConstant="2.0" specularConstant="1.0" specularExponent="17.14" surfaceScale="10.0">
+                           <bumpInput>
+                              <Shadow color="#0f1703" height="46.0" radius="17.83" width="27.32" />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant azimuth="147.85" color="#8dc63f" elevation="89.29" />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Label>
+                  <Label fx:id="date" alignment="CENTER" layoutX="1068.0" layoutY="7.0" prefHeight="28.0" prefWidth="124.0" text="00/00/0000" textAlignment="CENTER" textFill="#8dc63f">
+                     <font>
+                        <Font name="Calibri Bold" size="19.0" />
+                     </font>
+                     <effect>
+                        <Lighting diffuseConstant="2.0" specularConstant="1.0" specularExponent="17.14" surfaceScale="10.0">
+                           <bumpInput>
+                              <Shadow color="#162502" height="36.75" radius="15.4725" width="27.14" />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant azimuth="147.85" color="#8dc63f" elevation="89.29" />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Label>
+                  <StackPane fx:id="rootPane" layoutX="210.0" layoutY="40.0" maxHeight="570.0" maxWidth="990.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+</FlowPane>
