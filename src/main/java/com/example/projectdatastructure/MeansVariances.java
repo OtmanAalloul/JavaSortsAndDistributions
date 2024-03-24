@@ -1,18 +1,27 @@
 package com.example.projectdatastructure;
 
-import com.example.projectdatastructure.helpers.item;
+import com.example.projectdatastructure.helpers.*;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTabPane;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.StackPane;
+import javafx.stage.DirectoryChooser;
 
+import java.io.File;
 import java.util.*;
 
 public class MeansVariances {
@@ -62,22 +71,27 @@ public class MeansVariances {
     public ComboBox boxMeans;
     @FXML
     public ComboBox boxVariances;
-
     @FXML
-    private LineChart<Number, Number> performanceChart;
-
+    public StackPane rootPane;
     @FXML
-    private NumberAxis xAxis;
-
+    public Tab generatedDataPerformance;
     @FXML
-    private NumberAxis yAxis;
+    private LineChart<String, Number> performanceChartGenerating;
+    @FXML
+    private LineChart<String, Number> performanceChart;
+
+    private JFXSpinner spinner;
+
     private final List<Double> means = new ArrayList<>();
     private final List<Double> variances = new ArrayList<>();
-    private static Map<Integer, Map<Double, Map<Double, Double[]>>> matrices = new HashMap<>();
+    private final List<Integer> dataSizes = new ArrayList<>();
+
+    private static Map<Integer, Map<Double, Map<Double, DataInfo>>> matrices = new HashMap<>();
 
     public void initialize() {
         meansVariancesTab.getTabs().remove(generatedData);
         meansVariancesTab.getTabs().remove(sortedData);
+        meansVariancesTab.getTabs().remove(generatedDataPerformance);
         meansValues.setText("");
         variancesValues.setText("");
         valueMeans.setText("");
@@ -106,7 +120,6 @@ public class MeansVariances {
             }
         });
 
-
         // Initialize table columns just once, not in the generate method
         TableColumn<item, Integer> idColumn = new TableColumn<>("ID");
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -118,6 +131,12 @@ public class MeansVariances {
         tableView2.getColumns().addAll(idColumn, dataColumn);
         tableView3.getColumns().addAll(idColumn, dataColumn);
         tableView4.getColumns().addAll(idColumn, dataColumn);
+
+        spinner = new JFXSpinner();
+        spinner.setMaxSize(50, 50);
+        spinner.setVisible(false);
+        StackPane.setAlignment(spinner, Pos.CENTER);
+        rootPane.getChildren().add(spinner);
     }
 
     public void addMean(ActionEvent actionEvent) {
@@ -154,36 +173,76 @@ public class MeansVariances {
     }
 
     public void generate(ActionEvent actionEvent) {
-        if (size1.getText().isEmpty() || size2.getText().isEmpty() || size3.getText().isEmpty() || size4.getText().isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please enter all the sizes");
-            alert.showAndWait();
+        meansVariancesTab.getTabs().add(generatedDataPerformance);
+        meansVariancesTab.getTabs().add(generatedData);
+        meansVariancesTab.getSelectionModel().select(generatedDataPerformance);
+        if (size1.getText().isEmpty() || size2.getText().isEmpty() || size3.getText().isEmpty() || size4.getText().isEmpty()) {
+            showAlert("Please enter all the sizes");
+            return;
         }
-        if (means.isEmpty() || variances.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please enter the means and variances");
-            alert.showAndWait();
+
+        if (means.isEmpty() || variances.isEmpty()) {
+            showAlert("Please enter the means and variances");
+            return;
         }
-        else {
-            meansVariancesTab.getTabs().add(generatedData);
-            meansVariancesTab.getSelectionModel().select(generatedData);
-            sizeValue1.setText(size1.getText());
-            sizeValue2.setText(size2.getText());
-            sizeValue3.setText(size3.getText());
-            sizeValue4.setText(size4.getText());
-            boxMeans.setItems(FXCollections.observableArrayList(means));
-            boxVariances.setItems(FXCollections.observableArrayList(variances));
-            List<Integer> dataSizes = List.of(Integer.parseInt(size1.getText()), Integer.parseInt(size2.getText()), Integer.parseInt(size3.getText()), Integer.parseInt(size4.getText()));
-            List<Double> meansList = new ArrayList<>(means); // Convert means array to List<Double>
-            List<Double> variancesList = new ArrayList<>(variances); // Convert variances array to List<Double>
-            MatrixGenerator matrixGenerator = new MatrixGenerator(dataSizes, meansList, variancesList);
-            matrices = matrixGenerator.generateMatrices();
-        }
+
+        toggleSpinner(true); // Show spinner
+
+        // Clear previous data from the chart
+        Platform.runLater(() -> performanceChartGenerating.getData().clear());
+
+        // Start the data generation task
+        Task<Void> generateTask = new Task<>() {
+            @Override
+            protected Void call() {
+                sizeValue1.setText(size1.getText());
+                sizeValue2.setText(size2.getText());
+                sizeValue3.setText(size3.getText());
+                sizeValue4.setText(size4.getText());
+                boxMeans.setItems(FXCollections.observableArrayList(means));
+                boxVariances.setItems(FXCollections.observableArrayList(variances));
+                dataSizes.add(Integer.parseInt(size1.getText()));
+                dataSizes.add(Integer.parseInt(size2.getText()));
+                dataSizes.add(Integer.parseInt(size3.getText()));
+                dataSizes.add(Integer.parseInt(size4.getText()));
+
+                MatrixGenerator matrixGenerator = new MatrixGenerator(dataSizes, means, variances);
+                Map<Integer, Map<Double, Map<Double, DataInfo>>> sizeMatrices = matrixGenerator.generateMatrices();
+
+                // Update the matrices map with the newly generated data
+                matrices.putAll(sizeMatrices);
+
+                // Create a series for each mean and variance combination
+                means.forEach(mean -> variances.forEach(variance -> {
+                    XYChart.Series<String, Number> series = new XYChart.Series<>();
+                    series.setName("Mean: " + mean + ", Variance: " + variance);
+
+                    // Add data points to the series
+                    dataSizes.forEach(size -> {
+                        DataInfo dataInfo = sizeMatrices.get(size).get(mean).get(variance);
+                        series.getData().add(new XYChart.Data<>(size.toString(), dataInfo.getGenerationTime()));
+                    });
+
+                    // Update the chart on the JavaFX thread
+                    Platform.runLater(() -> performanceChartGenerating.getData().add(series));
+                }));
+
+                toggleSpinner(false); // Hide spinner after generation is done
+                return null;
+            }
+
+            @Override
+            protected void failed() {
+                super.failed();
+                showAlert("Failed to generate data: " + getException().getMessage());
+                toggleSpinner(false);
+            }
+        };
+
+        // Start the task on a background thread
+        new Thread(generateTask).start();
     }
+
 
     public void clear(ActionEvent actionEvent) {
         meansValues.setText("");
@@ -194,45 +253,65 @@ public class MeansVariances {
         size2.setText("");
         size3.setText("");
         size4.setText("");
+        tableView1.getItems().clear();
+        tableView2.getItems().clear();
+        tableView3.getItems().clear();
+        tableView4.getItems().clear();
+        boxMeans.getItems().clear();
+        boxVariances.getItems().clear();
+        means.clear();
+        variances.clear();
+        matrices.clear();
+        dataSizes.clear();
+        meansVariancesTab.getTabs().remove(generatedData);
+        meansVariancesTab.getTabs().remove(sortedData);
+        meansVariancesTab.getSelectionModel().select(setUp);
+        performanceChart.getData().clear();
     }
 
     public void sortingData(ActionEvent actionEvent) {
         meansVariancesTab.getTabs().add(sortedData);
         meansVariancesTab.getSelectionModel().select(sortedData);
-        // Clear the chart from previous data
-        performanceChart.getData().clear();
+        toggleSpinner(true); // Show spinner
 
-        // Go through each combination of mean and variance
-        for (Double mean : means) {
-            for (Double variance : variances) {
-                XYChart.Series<Number, Number> series = new XYChart.Series<>();
-                series.setName("Mean: " + mean + " Variance: " + variance);
+        // Clear previous data from the chart
+        Platform.runLater(() -> performanceChart.getData().clear());
 
-                // Go through each data size
-                for (Integer size : matrices.keySet()) {
-                    Map<Double, Map<Double, Double[]>> meanMap = matrices.get(size);
-                    if (meanMap != null && meanMap.containsKey(mean)) {
-                        Map<Double, Double[]> varianceMap = meanMap.get(mean);
-                        if (varianceMap != null && varianceMap.containsKey(variance)) {
-                            Double[] unsortedData = varianceMap.get(variance);
-                            // Timing the sorting
-                            long sortingStartTime = System.currentTimeMillis();
-                            Comparable[] sortedData = MergeSort.sortAndReturn(unsortedData);
-                            long sortingEndTime = System.currentTimeMillis();
+        // Start the data generation task
+        Task<Void> sortingTask = new Task<>() {
+            @Override
+            protected Void call() {
+                // Create a series for each mean and variance combination
+                means.forEach(mean -> variances.forEach(variance -> {
+                    XYChart.Series<String, Number> series = new XYChart.Series<>();
+                    series.setName("Mean: " + mean + ", Variance: " + variance);
 
-                            // Calculating time
-                            long sortingTime = sortingEndTime - sortingStartTime;
+                    // Add data points to the series
+                    dataSizes.forEach(size -> {
+                        DataInfo dataInfo = matrices.get(size).get(mean).get(variance);
+                        series.getData().add(new XYChart.Data<>(size.toString(), dataInfo.getSortingTime()));
+                    });
 
-                            // Add the timing data to the series
-                            series.getData().add(new XYChart.Data<>(size, sortingTime));
-                        }
-                    }
-                }
-                performanceChart.getData().add(series); // Add the series to the chart
+                    // Update the chart on the JavaFX thread
+                    Platform.runLater(() -> performanceChart.getData().add(series));
+                }));
+
+                toggleSpinner(false); // Hide spinner after generation is done
+                return null;
             }
-        }
-        // Optional: customize the chart, like adding a title or changing the axis labels
+
+            @Override
+            protected void failed() {
+                super.failed();
+                showAlert("Failed to sorting data: " + getException().getMessage());
+                toggleSpinner(false);
+            }
+        };
+
+        // Start the task on a background thread
+        new Thread(sortingTask).start();
     }
+
 
 
     private void populateTable(TableView<item> tableView, Double[] generatedData) {
@@ -244,31 +323,77 @@ public class MeansVariances {
         tableView.setItems(dataItems);
         tableView.refresh(); // Refresh the table view to update the display
     }
-
     private void populateTablesFromMatrices(Double mean, Double variance) {
         List<Integer> dataSizes = List.of(Integer.parseInt(size1.getText()), Integer.parseInt(size2.getText()), Integer.parseInt(size3.getText()), Integer.parseInt(size4.getText()));
         for (int size : dataSizes) {
             TableView<item> tableView = getTableViewForSize(size);
             if (tableView != null && matrices.containsKey(size) && matrices.get(size).containsKey(mean) && matrices.get(size).get(mean).containsKey(variance)) {
-                Double[] data = matrices.get(size).get(mean).get(variance);
+                DataInfo dataInfo = matrices.get(size).get(mean).get(variance);
+                Double[] data = dataInfo.getData();
                 populateTable(tableView, data);
             }
         }
     }
+
     private TableView<item> getTableViewForSize(int size) {
-        switch (size) {
-            case 10:
-                return tableView1;
-            case 20:
-                return tableView2;
-            case 30:
-                return tableView3;
-            case 40:
-                return tableView4;
-            default:
-                return null;
+        if (size == dataSizes.get(0)) {
+            return tableView1;
+        } else if (size == dataSizes.get(1)) {
+            return tableView2;
+        } else if (size == dataSizes.get(2)) {
+            return tableView3;
+        } else if (size == dataSizes.get(3)) {
+            return tableView4;
+        } else {
+            return null;
         }
     }
+    private void updateUI() {
+        // Perform all updates to the UI after data generation completes
+        Platform.runLater(() -> {
+            meansVariancesTab.getTabs().add(generatedData);
+            sizeValue1.setText(size1.getText());
+            sizeValue2.setText(size2.getText());
+            sizeValue3.setText(size3.getText());
+            sizeValue4.setText(size4.getText());
+            boxMeans.setItems(FXCollections.observableArrayList(means));
+            boxVariances.setItems(FXCollections.observableArrayList(variances));
+        });
+    }
+    private void toggleSpinner(boolean show) {
+        // If you are not already on the JavaFX thread, wrap this in Platform.runLater
+        spinner.setVisible(show);
+    }
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
+
+    public void importData(ActionEvent actionEvent) {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Select Export Directory");
+        File selectedDirectory = directoryChooser.showDialog(rootPane.getScene().getWindow());
+
+        if (selectedDirectory != null) {
+            String directoryPath = selectedDirectory.getAbsolutePath();
+
+            for (Integer size : matrices.keySet()) {
+                for (Double mean : matrices.get(size).keySet()) {
+                    for (Double variance : matrices.get(size).get(mean).keySet()) {
+                        DataInfo dataInfo = matrices.get(size).get(mean).get(variance);
+                        Double[] data = dataInfo.getData();
+                        long generationTime = dataInfo.getGenerationTime();
+                        long sortingTime = dataInfo.getSortingTime();
+
+                        com.example.projectdatastructure.helpers.DataExporter.exportData(directoryPath, size, mean, variance, data, generationTime, sortingTime);
+                    }
+                }
+            }
+        }
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.example.projectdatastructure;
 
+import com.example.projectdatastructure.helpers.DataInfo;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,32 +17,31 @@ public class MatrixGenerator {
         this.variances = variances;
     }
 
-    public Map<Integer, Map<Double, Map<Double, Double[]>>> generateMatrices() {
-        Map<Integer, Map<Double, Map<Double, Double[]>>> matrices = new HashMap<>();
+    public Map<Integer, Map<Double, Map<Double, DataInfo>>> generateMatrices() {
+        Map<Integer, Map<Double, Map<Double, DataInfo>>> matrices = new HashMap<>();
 
-        // Pour chaque taille d'ensemble de données, créez une matrice
         for (int size : dataSizes) {
-            // Générez une matrice 2D pour la taille actuelle
-            Map<Double, Map<Double, Double[]>> matrix = new HashMap<>();
+            Map<Double, Map<Double, DataInfo>> matrixForMean = new HashMap<>();
 
-            // Pour chaque moyenne
             for (double mean : means) {
-                Map<Double, Double[]> row = new HashMap<>();
+                Map<Double, DataInfo> matrixForVariance = new HashMap<>();
 
-                // Pour chaque variance
                 for (double variance : variances) {
-                    // Générez des données pour la combinaison de moyenne et variance
+                    long startTime = System.nanoTime();
                     Double[] samples = GenerateData.generateLogisticDistributionData(size, mean, variance);
-                    row.put(variance, samples);
+                    long generationTime = (System.nanoTime() - startTime) / 1000000;
+
+                    // Here we should sort data to calculate sortingTime
+                    Double[] sortedSamples = MergeSort.sortAndReturn(samples); // Ensure this returns Double[]
+                    long sortingTime = (System.nanoTime() - startTime) / 1000000 - generationTime;
+
+                    DataInfo dataInfo = new DataInfo(samples, generationTime, sortingTime);
+                    matrixForVariance.put(variance, dataInfo);
                 }
-
-                matrix.put(mean, row);
+                matrixForMean.put(mean, matrixForVariance);
             }
-
-            // Associez la matrice générée à la taille correspondante
-            matrices.put(size, matrix);
+            matrices.put(size, matrixForMean);
         }
         return matrices;
     }
 }
-

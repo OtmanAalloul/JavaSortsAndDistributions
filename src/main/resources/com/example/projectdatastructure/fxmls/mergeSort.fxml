@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="depotage" maxHeight="520.0" maxWidth="953.0" minHeight="520.0" minWidth="953.0" prefHeight="520.0" prefWidth="953.0" style="-fx-background-color: transparent;" stylesheets="@../styles/depotage.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projectdatastructure.MergeSort">
+    <children>
+        <JFXTabPane fx:id="depotageTab" layoutX="493.0" layoutY="194.0" prefHeight="520.0" prefWidth="953.0" style="-fx-background-color: transparent; -fx-background-radius: 25 0 0 0; -fx-border-radius: 25 0 0 0;" stylesheets="@../styles/depotage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab fx:id="expedie" text="Definition">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <VBox alignment="CENTER" layoutY="2.0" maxHeight="520.0" maxWidth="940.0" minHeight="456.0" minWidth="940.0" prefHeight="456.0" prefWidth="940.0">
+                                    <children>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="460.0" text="What is a Merge Sort ?" textAlignment="CENTER" wrapText="true">
+                                            <font>
+                                                <Font name="Calibri Bold" size="22.0" />
+                                            </font>
+                                        </Label>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="320.0" layoutY="207.0" lineSpacing="8.0" prefHeight="121.0" prefWidth="936.0" text="Merge sort is defined as a sorting algorithm that works by dividing an array into smaller subarrays, sorting each subarray, and then merging the sorted subarrays back together to form the final sorted array.In simple terms, we can say that the process of merge sort is to divide the array into two halves, sort each half, and then merge the sorted halves back together. This process is repeated until the entire array is sorted." textAlignment="JUSTIFY" wrapText="true">
+                                            <font>
+                                                <Font name="Comic Sans MS" size="15.0" />
+                                            </font>
+                                        </Label>
+                                        <ImageView fitHeight="207.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/MergeSort.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="274.0" layoutY="77.0" prefHeight="47.0" prefWidth="460.0" text="How does Merge Sort work?" textAlignment="CENTER" wrapText="true">
+                                            <font>
+                                                <Font name="Calibri Bold" size="22.0" />
+                                            </font>
+                                        </Label>
+                                        <Label contentDisplay="CENTER" layoutX="38.0" layoutY="325.0" lineSpacing="10.0" prefHeight="65.0" prefWidth="939.0" text="Merge sort is a recursive algorithm that continuously splits the array in half until it cannot be further divided i.e., the array has only one element left (an array with one element is always sorted). Then the sorted subarrays are merged into one sorted array." textAlignment="JUSTIFY" wrapText="true">
+                                            <font>
+                                                <Font name="Comic Sans MS" size="15.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Properties">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <VBox alignment="CENTER" layoutY="2.0" maxHeight="520.0" maxWidth="954.0" minHeight="437.0" minWidth="945.0" prefHeight="438.0" prefWidth="945.0">
+                                    <children>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="101.0" prefWidth="504.0" text="When to Use Merge Sort?" textAlignment="CENTER" wrapText="true">
+                                            <font>
+                                                <Font name="Calibri Bold" size="22.0" />
+                                            </font>
+                                        </Label>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="320.0" layoutY="207.0" lineSpacing="8.0" prefHeight="68.0" prefWidth="936.0" text="Stability is important     Space is not an issue     Input size is large     Input is partially sorted" textAlignment="CENTER" wrapText="true">
+                                            <font>
+                                                <Font name="Comic Sans MS" size="17.0" />
+                                            </font>
+                                        </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="231.0" layoutY="60.0" prefHeight="101.0" prefWidth="504.0" text="When to NOT Use Merge Sort?" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font name="Calibri Bold" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="111.0" lineSpacing="8.0" prefHeight="68.0" prefWidth="936.0" text="When space is limited     For very small arrays     When stability is not required     For highly unsorted arrays" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font name="Comic Sans MS" size="17.0" />
+                                 </font>
+                              </Label>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="recu" text="Analysis Time Complexity">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <VBox alignment="CENTER" layoutY="2.0" maxHeight="520.0" maxWidth="954.0" minHeight="437.0" minWidth="945.0" prefHeight="438.0" prefWidth="945.0">
+                                    <children>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="504.0" text="Best Case Time Complexity of Merge Sort" textAlignment="CENTER" wrapText="true">
+                                            <font>
+                                                <Font name="Calibri Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="320.0" layoutY="207.0" lineSpacing="8.0" prefHeight="93.0" prefWidth="936.0" text="The best case scenario occurs when the elements are already sorted in ascending order. If two sorted arrays of size n need to be merged, the minimum number of comparisons will be n. This happens when all elements of the first array are less than the elements of the second array. The best case time complexity of merge sort is O(n∗logn)" wrapText="true">
+                                            <font>
+                                                <Font name="Comic Sans MS" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="231.0" layoutY="60.0" prefHeight="55.0" prefWidth="504.0" text="Average Case Time Complexity of Merge Sort" textAlignment="CENTER" wrapText="true">
+                                            <font>
+                                                <Font name="Calibri Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="111.0" lineSpacing="8.0" prefHeight="68.0" prefWidth="936.0" text="The average case scenario occurs when the elements are jumbled (neither in ascending nor descending order). This depends on the number of comparisons. The average case time complexity of merge sort is O(n∗logn)" wrapText="true">
+                                            <font>
+                                                <Font name="Comic Sans MS" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="231.0" layoutY="17.0" prefHeight="63.0" prefWidth="504.0" text="Worst Case Time Complexity of Merge Sort" textAlignment="CENTER" wrapText="true">
+                                            <font>
+                                                <Font name="Calibri Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label contentDisplay="CENTER" layoutX="36.0" layoutY="284.0" lineSpacing="8.0" prefHeight="69.0" prefWidth="936.0" text="The worst-case scenario occurs when the given array is sorted in descending order leading to the maximum number of comparisons. In this case, for two sorted arrays of size n, the minimum number of comparisons will be 2n. The worst-case time complexity of merge sort is O(n∗logn)" wrapText="true">
+                                            <font>
+                                                <Font name="Comic Sans MS" size="12.0" />
+                                            </font>
+                                        </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="231.0" layoutY="302.0" prefHeight="59.0" prefWidth="504.0" text="Analysis of Merge Sort Space Complexity" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font name="Calibri Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label contentDisplay="CENTER" layoutX="15.0" layoutY="327.0" lineSpacing="8.0" prefHeight="68.0" prefWidth="936.0" text="In merge sort, all elements are copied into an auxiliary array of size N, where N is the number of elements present in the unsorted array. Hence, the space complexity for Merge Sort is O(N)" wrapText="true">
+                                 <font>
+                                    <Font name="Comic Sans MS" size="12.0" />
+                                 </font>
+                              </Label>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </JFXTabPane>
+    </children>
+</AnchorPane>

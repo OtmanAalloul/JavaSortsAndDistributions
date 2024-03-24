@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="520.0" maxWidth="953.0" minHeight="520.0" minWidth="953.0" prefHeight="520.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projectdatastructure.Presentation.Introduction">
+    <children>
+        <VBox alignment="CENTER" layoutY="2.0" maxHeight="520.0" maxWidth="953.0" minHeight="520.0" minWidth="953.0" prefHeight="520.0" prefWidth="953.0">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="460.0" text="This application is" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="Calibri Bold" size="22.0" />
+                    </font>
+                </Label>
+            <HBox alignment="CENTER" prefHeight="392.0" prefWidth="954.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="440.0" prefWidth="383.0">
+                     <children>
+                            <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="10.0" prefHeight="51.0" prefWidth="939.0" text="developed by" textAlignment="JUSTIFY" wrapText="true">
+                                <font>
+                                    <Font name="Comic Sans MS" size="14.0" />
+                                </font>
+                            </Label>
+                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                             <image>
+                                 <Image url="@../images/profile.JPG" />
+                             </image>
+                         </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" lineSpacing="10.0" prefHeight="51.0" prefWidth="939.0" text="Outmane Aalloul" textAlignment="JUSTIFY" wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" lineSpacing="10.0" prefHeight="53.0" prefWidth="383.0" text="Student in the faculty ofsciences of Mohamed V University in Rabat" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="263.0" lineSpacing="10.0" prefHeight="34.0" prefWidth="383.0" text="Department of Computer Science" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="333.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="10.0" prefHeight="51.0" prefWidth="939.0" text="supervised by" textAlignment="JUSTIFY" wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS" size="14.0" />
+                           </font>
+                        </Label>
+                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                             <image>
+                                 <Image url="@../images/profile2.png" />
+                             </image>
+                         </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" lineSpacing="10.0" prefHeight="51.0" prefWidth="939.0" text="Oussama Mohamed Reda " textAlignment="JUSTIFY" wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" lineSpacing="10.0" prefHeight="58.0" prefWidth="334.0" text="Professor in the faculty ofsciences of Mohamed V University in Rabat" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="263.0" lineSpacing="10.0" prefHeight="24.0" prefWidth="334.0" text="Department of Computer Science" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="257.0" layoutY="27.0" prefHeight="47.0" prefWidth="460.0" text="Advanced Algorithm Project" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Calibri Bold" size="22.0" />
+               </font>
+            </Label>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

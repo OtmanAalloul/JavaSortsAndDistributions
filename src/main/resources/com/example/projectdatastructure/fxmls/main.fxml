@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<FlowPane alignment="CENTER" columnHalignment="CENTER" maxHeight="650.0" maxWidth="1206.0" minHeight="650.0" minWidth="1206.0" prefHeight="650.0" prefWidth="1206.0" style="-fx-background-color: white;" stylesheets="@../styles/chartStyles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projectdatastructure.MainController">
+<FlowPane alignment="CENTER" columnHalignment="CENTER" maxHeight="650.0" maxWidth="1206.0" minHeight="650.0" minWidth="1206.0" prefHeight="650.0" prefWidth="1206.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projectdatastructure.MainController">
    <children>
-      <StackPane maxHeight="650.0" maxWidth="1206.0" minHeight="650.0" minWidth="1206.0" prefHeight="650.0" prefWidth="1205.0" style="-fx-background-color: white;" styleClass="root" stylesheets="@../styles/chartStyles.css">
+      <StackPane maxHeight="650.0" maxWidth="1206.0" minHeight="650.0" minWidth="1206.0" prefHeight="650.0" prefWidth="1205.0" style="-fx-background-color: white;" styleClass="root">
          <children>
             <AnchorPane maxHeight="650.0" maxWidth="1206.0" minHeight="650.0" minWidth="1206.0" prefHeight="650.0" prefWidth="1206.0" style="-fx-background-color: white;" styleClass="root">
                <children>
@@ -47,7 +47,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="depotage" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadDistributionAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Logistic Distribution" textAlignment="CENTER">
+                        <JFXButton fx:id="logisticDistribution" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadDistributionAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Logistic Distribution" textAlignment="CENTER">
                            <font>
                               <Font name="Calibri Bold" size="16.0" />
                            </font>
@@ -65,7 +65,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="stockage" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadMeansVariancesAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Means &amp; Variances" textAlignment="CENTER">
+                        <JFXButton fx:id="mergeSort" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadMergeSortAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Merge Sort" textAlignment="CENTER">
                            <font>
                               <Font name="Calibri Bold" size="16.0" />
                            </font>
@@ -83,7 +83,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="livraison" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadDistributionAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Data Generation" textAlignment="CENTER">
+                        <JFXButton fx:id="generateProcess" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadMeansVariancesAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Generate &amp; Process" textAlignment="CENTER">
                            <font>
                               <Font name="Calibri Bold" size="16.0" />
                            </font>
@@ -98,7 +98,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="statistics" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadDistributionAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Sorting &amp; Analyze">
+                        <JFXButton fx:id="statistics" buttonType="RAISED" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadDistributionAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="Analyze">
                            <font>
                               <Font name="Calibri Bold" size="16.0" />
                            </font>
@@ -116,7 +116,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="statistics1" buttonType="RAISED" layoutX="12.0" layoutY="260.0" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadDistributionAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="About">
+                        <JFXButton fx:id="statistics1" buttonType="RAISED" layoutX="12.0" layoutY="260.0" maxHeight="43.0" maxWidth="205.0" minHeight="40.0" minWidth="205.0" onAction="#loadAboutAction" prefHeight="43.0" prefWidth="205.0" ripplerFill="#9cc98e" styleClass="menuBar" stylesheets="@../styles/main.css" text="About">
                            <font>
                               <Font name="Calibri Bold" size="16.0" />
                            </font>

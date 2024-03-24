@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="depotage" maxHeight="520.0" maxWidth="953.0" minHeight="520.0" minWidth="953.0" prefHeight="520.0" prefWidth="953.0" style="-fx-background-color: transparent;" stylesheets="@../styles/depotage.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projectdatastructure.DepotageController">
+<AnchorPane fx:id="depotage" maxHeight="520.0" maxWidth="953.0" minHeight="520.0" minWidth="953.0" prefHeight="520.0" prefWidth="953.0" style="-fx-background-color: transparent;" stylesheets="@../styles/depotage.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projectdatastructure.Presentation.Introduction">
    <children>
       <JFXTabPane fx:id="depotageTab" layoutX="493.0" layoutY="194.0" prefHeight="520.0" prefWidth="953.0" style="-fx-background-color: transparent; -fx-background-radius: 25 0 0 0; -fx-border-radius: 25 0 0 0;" stylesheets="@../styles/depotage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>

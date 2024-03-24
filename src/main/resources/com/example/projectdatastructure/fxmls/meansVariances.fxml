@@ -164,7 +164,13 @@
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
-
+                      <graphic>
+                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@../images/check.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
                   </JFXButton>
                   <JFXButton fx:id="clear" alignment="CENTER" buttonType="RAISED" layoutX="408.0" layoutY="39.0" onAction="#clear" prefHeight="43.0" prefWidth="158.0" ripplerFill="WHITE" style="-fx-background-color: #8dc63f; -fx-background-radius: 16; -fx-border-radius: 16;" text="Clear" textFill="WHITE">
                      <font>
@@ -176,11 +182,43 @@
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
+                      <graphic>
+                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@../images/update.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
                   </JFXButton>
                </children>
             </HBox>
                 </children>
             </VBox>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </Tab>
+                    <Tab fx:id="generatedDataPerformance" text="Measure execution times">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <VBox alignment="CENTER" layoutY="2.0" maxHeight="520.0" maxWidth="954.0" minHeight="437.0" minWidth="945.0" prefHeight="460.0" prefWidth="946.0">
+                                        <children>
+                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="104.0" prefWidth="504.0" text="Generating Data Performance" textAlignment="CENTER" wrapText="true">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="22.0" />
+                                                </font>
+                                            </Label>
+                                            <LineChart fx:id="performanceChartGenerating" prefHeight="331.0" prefWidth="946.0">
+                                                <xAxis>
+                                                    <CategoryAxis animated="false" label="Data Size" side="BOTTOM" />
+                                                </xAxis>
+                                                <yAxis>
+                                                    <NumberAxis label="Time (ms)" side="LEFT" />
+                                                </yAxis>
+                                            </LineChart>
+                                        </children>
+                                    </VBox>
                                 </children>
                             </AnchorPane>
                         </content>
@@ -338,21 +376,21 @@
                                 <children>
                                     <VBox alignment="CENTER" layoutY="2.0" maxHeight="520.0" maxWidth="954.0" minHeight="437.0" minWidth="945.0" prefHeight="460.0" prefWidth="946.0">
                                         <children>
-                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="104.0" prefWidth="504.0" text="Data Generation and Sorting Performance" textAlignment="CENTER" wrapText="true">
+                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="104.0" prefWidth="504.0" text="Sorting Data Performance" textAlignment="CENTER" wrapText="true">
                                                 <font>
                                                     <Font name="Calibri Bold" size="22.0" />
                                                 </font>
                                             </Label>
                                             <LineChart fx:id="performanceChart" prefHeight="331.0" prefWidth="946.0">
                                                 <xAxis>
-                                                    <NumberAxis label="Data Size" side="BOTTOM" fx:id="xAxis" />
+                                                    <CategoryAxis animated="false" label="Data Size" side="BOTTOM" />
                                                 </xAxis>
                                                 <yAxis>
-                                                    <NumberAxis fx:id="yAxis" label="Time (ms)" side="LEFT" />
+                                                    <NumberAxis label="Time (ms)" side="LEFT" />
                                                 </yAxis>
                                             </LineChart>
 
-                                            <JFXButton fx:id="importData" alignment="CENTER" buttonType="RAISED" prefHeight="43.0" prefWidth="158.0" ripplerFill="WHITE" style="-fx-background-color: #8dc63f; -fx-background-radius: 16; -fx-border-radius: 16;" text="Import " textFill="WHITE">
+                                            <JFXButton fx:id="importData" alignment="CENTER" buttonType="RAISED" onAction="#importData" prefHeight="43.0" prefWidth="158.0" ripplerFill="WHITE" style="-fx-background-color: #8dc63f; -fx-background-radius: 16; -fx-border-radius: 16;" text="Import Results" textFill="WHITE">
                                                 <font>
                                                     <Font name="Calibri Bold" size="18.0" />
                                                 </font>
@@ -362,6 +400,13 @@
                                                 <VBox.margin>
                                                     <Insets top="20.0" />
                                                 </VBox.margin>
+                                                <graphic>
+                                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                        <image>
+                                                            <Image url="@../images/save.png" />
+                                                        </image>
+                                                    </ImageView>
+                                                </graphic>
                                             </JFXButton>
                                         </children>
                                     </VBox>
@@ -371,5 +416,6 @@
                     </Tab>
                 </tabs>
             </JFXTabPane>
+      <StackPane fx:id="rootPane" layoutX="405.0" layoutY="107.0" prefHeight="102.0" prefWidth="210.0" />
         </children>
 </AnchorPane>

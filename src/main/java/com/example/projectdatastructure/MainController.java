@@ -40,29 +40,6 @@ public class MainController implements Initializable {
     @FXML
     private VBox calendar;
 
-    @FXML
-    private Pane vivoenergy;
-
-    @FXML
-    private JFXButton dashboard;
-
-    @FXML
-    private JFXButton depotage;
-
-    @FXML
-    private JFXButton stockage;
-
-    @FXML
-    private JFXButton livraison;
-
-    @FXML
-    private JFXButton statistics;
-
-    @FXML
-    private JFXButton controls;
-
-    @FXML
-    private JFXButton gestion;
 
     Service<AnchorPane> loadDistributionTask = new Service() {
         @Override
@@ -96,12 +73,47 @@ public class MainController implements Initializable {
                         rootPane.getChildren().add(spinner);
                     });
 
-                    return new FXMLLoader(getClass().getResource("/com/example/projectdatastructure/fxmls/MeansVariances.fxml")).load();
+                    return new FXMLLoader(getClass().getResource("/com/example/projectdatastructure/fxmls/meansVariances.fxml")).load();
                 }
             };
         }
     };
+    Service<AnchorPane> loadMergeSortTask = new Service() {
+        @Override
+        protected Task<AnchorPane> createTask() {
+            return new Task() {
+                @Override
+                protected AnchorPane call() throws Exception {
+                    Platform.runLater(() -> {
+                        JFXSpinner spinner = new JFXSpinner(JFXSpinner.INDETERMINATE_PROGRESS);
+                        spinner.setMaxHeight(100);
+                        spinner.setMaxWidth(100);
+                        rootPane.getChildren().add(spinner);
+                    });
 
+                    return new FXMLLoader(getClass().getResource("/com/example/projectdatastructure/fxmls/mergeSort.fxml")).load();
+                }
+            };
+        }
+    };
+    Service<AnchorPane> loadAboutTask = new Service() {
+        @Override
+        protected Task<AnchorPane> createTask() {
+            return new Task() {
+                @Override
+                protected AnchorPane call() throws Exception {
+                    Platform.runLater(() -> {
+                        JFXSpinner spinner = new JFXSpinner(JFXSpinner.INDETERMINATE_PROGRESS);
+                        spinner.setMaxHeight(100);
+                        spinner.setMaxWidth(100);
+                        rootPane.getChildren().add(spinner);
+                    });
+
+                    return new FXMLLoader(getClass().getResource("/com/example/projectdatastructure/fxmls/about.fxml")).load();
+                }
+            };
+        }
+    };
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
@@ -145,7 +157,20 @@ public class MainController implements Initializable {
 
         loadDistributionTask.restart();
     }
+    private void loadMergeSort() throws IOException {
 
+        loadMergeSortTask.setOnSucceeded(workerStateEvent -> {
+            title.setText("Merge Sort");
+            rootPane.getChildren().clear();
+            rootPane.getChildren().add(loadMergeSortTask.getValue());
+        });
+
+        loadMergeSortTask.setOnCancelled(workerStateEvent -> {
+            System.out.println("Cancelled");
+        });
+
+        loadMergeSortTask.restart();
+    }
     private void loadMeansVariances() throws IOException {
 
         loadMeansVariancesTask.setOnSucceeded(workerStateEvent -> {
@@ -159,6 +184,20 @@ public class MainController implements Initializable {
         });
 
         loadMeansVariancesTask.restart();
+    }
+    private void loadAbout() throws IOException {
+
+        loadAboutTask.setOnSucceeded(workerStateEvent -> {
+            title.setText("About");
+            rootPane.getChildren().clear();
+            rootPane.getChildren().add(loadAboutTask.getValue());
+        });
+
+        loadAboutTask.setOnCancelled(workerStateEvent -> {
+            System.out.println("Cancelled");
+        });
+
+        loadAboutTask.restart();
     }
     @FXML
     private void loadIntroductionAction(ActionEvent e) throws IOException {
@@ -174,6 +213,14 @@ public class MainController implements Initializable {
     @FXML
     private void loadMeansVariancesAction(ActionEvent e) throws IOException {
         loadMeansVariances();
+    }
+    @FXML
+    private void loadMergeSortAction(ActionEvent e) throws IOException {
+        loadMergeSort();
+    }
+    @FXML
+    private void loadAboutAction(ActionEvent e) throws IOException {
+        loadAbout();
     }
 
 }
